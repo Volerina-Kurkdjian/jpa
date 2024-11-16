@@ -1,4 +1,4 @@
-package com.example.Spring.Data.Overview.dto;
+package com.example.Spring.Data.Overview.dto.student;
 
 import lombok.*;
 

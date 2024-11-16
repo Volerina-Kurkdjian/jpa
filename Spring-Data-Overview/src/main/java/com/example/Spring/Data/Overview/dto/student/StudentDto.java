@@ -1,4 +1,4 @@
-package com.example.Spring.Data.Overview.dto;
+package com.example.Spring.Data.Overview.dto.student;
 
 
 import lombok.AllArgsConstructor;
@@ -20,4 +20,5 @@ public class StudentDto {
     private Integer age;
     private List<String> subjects;
     private Date registrationDate;
+    private Double amount;
 }

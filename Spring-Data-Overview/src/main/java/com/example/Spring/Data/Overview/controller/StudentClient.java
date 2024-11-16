@@ -1,7 +1,7 @@
 package com.example.Spring.Data.Overview.controller;
 
-import com.example.Spring.Data.Overview.dto.StudentDto;
-import com.example.Spring.Data.Overview.dto.StudentResponse;
+import com.example.Spring.Data.Overview.dto.student.StudentDto;
+import com.example.Spring.Data.Overview.dto.student.StudentResponse;
 import com.example.Spring.Data.Overview.service.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

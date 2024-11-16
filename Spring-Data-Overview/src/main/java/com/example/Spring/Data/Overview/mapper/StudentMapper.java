@@ -1,9 +1,7 @@
 package com.example.Spring.Data.Overview.mapper;
 
-import com.example.Spring.Data.Overview.dto.StudentDto;
+import com.example.Spring.Data.Overview.dto.student.StudentDto;
 import com.example.Spring.Data.Overview.model.Student;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,6 +17,7 @@ public class StudentMapper {
                 .enrollmentId(student.getEnrollmentId())
                 .age(student.getAge())
                 .registrationDate(student.getRegistrationDate())
+                .amount(student.getAmount())
                 .build();
     }
 
@@ -32,6 +31,7 @@ public class StudentMapper {
         student.setEnrollmentId(studentDto.getEnrollmentId());
         student.setAge(studentDto.getAge());
         student.setRegistrationDate(studentDto.getRegistrationDate());
+        student.setAmount(studentDto.getAmount());
 
         return student;
     }

@@ -41,5 +41,5 @@ public class Student  {
     @Temporal(TemporalType.DATE)
     private Date registrationDate;
 
-
+    private Double amount;
 }

@@ -1,7 +1,7 @@
 package com.example.Spring.Data.Overview.service;
 
-import com.example.Spring.Data.Overview.dto.StudentDto;
-import com.example.Spring.Data.Overview.dto.StudentResponse;
+import com.example.Spring.Data.Overview.dto.student.StudentDto;
+import com.example.Spring.Data.Overview.dto.student.StudentResponse;
 import com.example.Spring.Data.Overview.mapper.StudentMapper;
 import com.example.Spring.Data.Overview.model.Student;
 import com.example.Spring.Data.Overview.repository.StudentRepository;
