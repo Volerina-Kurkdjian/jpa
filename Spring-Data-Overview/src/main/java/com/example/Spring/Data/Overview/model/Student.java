@@ -42,4 +42,11 @@ public class Student  {
     private Date registrationDate;
 
     private Double amount;
+
+    //cascade = {CascadeType.PERSIST} when we use it, we don't need to save the Guide separately in the service when saving a Student
+    //fetch = FetchType.LAZY  by default @ManyToOne is EAGER,
+    // means that it will also load the child when fetching the parent behind it is a full outer join
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST})
+    @JoinColumn(name="guide_id")
+    private Guide guide;
 }
