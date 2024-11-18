@@ -57,10 +57,12 @@ The result can be seen here:
 <img width="300" height="470" alt="image" src="https://github.com/user-attachments/assets/a3804b5d-3342-40bc-86c2-c325e3466a22">
 
 <br></br>
-When you omit the mappedBy attribute in the @OneToMany annotation in the Guide class, Hibernate will treat the relationship as unidirectional. This means that Hibernate will expect a JOIN table to manage the association between Guide and Student, rather than using a foreign key in the Student table.
+When you <b>omit</b> the <b> mappedBy </b> attribute in the <b>@OneToMany</b> annotation in the Guide class, Hibernate will treat the relationship as <b>unidirectional</b>. This means that Hibernate will expect a <b>JOIN table</b> to manage the association between Guide and Student, rather than using a foreign key in the Student table.
+<br><br>
 
-Explanation:
-Without mappedBy:
+<h2>Explanation: </h2>
+
+<b>Without mappedBy: </b>
 
 Hibernate will create a join table to manage the many-to-one relationship.
 
@@ -68,7 +70,7 @@ The studentList in the Guide class will be initialized, but it won't correctly m
 
 This could lead to Student entities not being loaded as expected when fetching a Guide.
 
-With mappedBy:
+<b>With mappedBy:</b>
 
 The mappedBy attribute specifies that the studentList is mapped by the guide attribute in the Student entity.
 
