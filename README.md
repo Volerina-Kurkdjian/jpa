@@ -97,6 +97,8 @@ Hibernate will then correctly fetch the Set<Student> when you fetch a Guide.
 
 <img width="631" alt="image" src="https://github.com/user-attachments/assets/bd09398f-4197-4a23-bbd4-02ab191a7f1a">
 
+<h1>CONCLUSION</h1>
+
 <h2> UNI-DIRECTIONAL One-to-Many and Many-to-One Relationships </h2>
 
 <h3>STUDENT TABLE</h3>
@@ -110,6 +112,20 @@ Hibernate will then correctly fetch the Set<Student> when you fetch a Guide.
 <h3>JOIN TABLE</h3>
 
 <img width="300" alt="image" src="https://github.com/user-attachments/assets/529f5a1e-fc44-4642-8dea-881371a3891e">
+
+
+<br></br>
+
+<h2> BI-DIRECTIONAL One-to-Many and Many-to-One Relationships </h2>
+
+<h3>STUDENT TABLE</h3>
+
+<img width="377" alt="image" src="https://github.com/user-attachments/assets/a2e923bd-f03c-4bba-9ee0-9b186e95806a">
+
+
+<h3>GUIDE TABLE</h3>
+
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/a994b848-7297-4051-9c7a-64c40b84f2bc">
 
 
 
