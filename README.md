@@ -25,20 +25,20 @@ The result can be seen here:
 <img width="404" alt="image" src="https://github.com/user-attachments/assets/26003d7d-dea5-438d-b0f4-4381c2b6535e">
 <br></br>
 
-![image](https://github.com/user-attachments/assets/c71d35ec-3b79-439f-8913-91be1f20db28) 
+<img width="484" alt="image" src="https://github.com/user-attachments/assets/c71d35ec-3b79-439f-8913-91be1f20db28"> 
 
 <br></br>
-![image](https://github.com/user-attachments/assets/61e16eba-fe7a-4c56-9dc0-0fb8a34f2bef)
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/61e16eba-fe7a-4c56-9dc0-0fb8a34f2bef">
 
 <br></br>
-![image](https://github.com/user-attachments/assets/4df9745a-1acc-40b5-bc03-e6d158f0beb0)
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/4df9745a-1acc-40b5-bc03-e6d158f0beb0">
 
 2. To save the parents associated with the child, we MUST have CASCADE TYPE PERSIST on ONE TO MANY
 
    <img width="479" alt="image" src="https://github.com/user-attachments/assets/1dff09cc-eaf2-4fa7-8dd9-86bc3dfa232b">
 
    <br></br>
-   ![image](https://github.com/user-attachments/assets/04fc1bb6-d205-4a03-ba45-aa7b876991c2)
+<img width="300" height="470" alt="image" src="https://github.com/user-attachments/assets/04fc1bb6-d205-4a03-ba45-aa7b876991c2">
 
 
   <br></br>
@@ -84,6 +84,22 @@ Hibernate will then correctly fetch the Set<Student> when you fetch a Guide.
 
  
 <h1>MANY TO ONE</h1>
+
+<br>If we don't specify a <b>@JoinColumn</b> attribute on the <b>parent side</b>, and we specify the <b>mappedBy</b> attribute on the <b>child side</b>, we would have the following result table</br>
+
+<img width="643" alt="image" src="https://github.com/user-attachments/assets/f644f2e7-9abd-4b6b-b921-1d5adccee32e">
+
+
+<br></br>
+<img width="643" alt="image" src="https://github.com/user-attachments/assets/5d1a6da6-4444-435f-968a-fc4525372049">
+
+<br></br>
+
+<img width="631" alt="image" src="https://github.com/user-attachments/assets/bd09398f-4197-4a23-bbd4-02ab191a7f1a">
+
+
+
+
 
 
 
