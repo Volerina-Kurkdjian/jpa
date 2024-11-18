@@ -18,6 +18,8 @@ The result can be seen here:
 
 <h1>ONE TO MANY</h1>
 
+<b>SAVING A CHILD</b>
+<br></br>
 1. No CASCADE TYPE ON CHILD means when saving a child with the list of parents, the parents associated with it are not saved
 
 <img width="404" alt="image" src="https://github.com/user-attachments/assets/26003d7d-dea5-438d-b0f4-4381c2b6535e">
@@ -44,7 +46,41 @@ The result can be seen here:
   <br></br>
   <img width="431" alt="image" src="https://github.com/user-attachments/assets/ef0ed9c5-c883-4c60-8d72-075fcd26d55e">
 
+<br></br>
 
+<b>LOADING A CHILD</b>
+<br></br>
+ By default, <b>@OneToMany</b> associations are fecthed <b>LAZY</b>ly. We have to specify <b>EAGER</b> <b>FetchType</b>
+ 
+<img width="643" alt="image" src="https://github.com/user-attachments/assets/3716500a-1beb-4f5c-ba56-02e7fbc94e95">
+<br></br>
+<img width="300" height="470" alt="image" src="https://github.com/user-attachments/assets/a3804b5d-3342-40bc-86c2-c325e3466a22">
+
+<br></br>
+When you omit the mappedBy attribute in the @OneToMany annotation in the Guide class, Hibernate will treat the relationship as unidirectional. This means that Hibernate will expect a JOIN table to manage the association between Guide and Student, rather than using a foreign key in the Student table.
+
+Explanation:
+Without mappedBy:
+
+Hibernate will create a join table to manage the many-to-one relationship.
+
+The studentList in the Guide class will be initialized, but it won't correctly map to the Student entity's guide field.
+
+This could lead to Student entities not being loaded as expected when fetching a Guide.
+
+With mappedBy:
+
+The mappedBy attribute specifies that the studentList is mapped by the guide attribute in the Student entity.
+
+This establishes a bidirectional relationship, where the Student entity maintains the foreign key and the Guide entity refers to it.
+
+Hibernate will then correctly fetch the Set<Student> when you fetch a Guide.
+
+
+
+
+
+ 
 <h1>MANY TO ONE</h1>
 
 
