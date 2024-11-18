@@ -1,6 +1,7 @@
 package com.example.Spring.Data.Overview.dto.student;
 
 
+import com.example.Spring.Data.Overview.model.Guide;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,4 +22,5 @@ public class StudentDto {
     private List<String> subjects;
     private Date registrationDate;
     private Double amount;
+    private Guide guide;
 }

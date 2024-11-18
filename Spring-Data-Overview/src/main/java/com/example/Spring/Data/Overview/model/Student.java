@@ -46,7 +46,11 @@ public class Student  {
     //cascade = {CascadeType.PERSIST} when we use it, we don't need to save the Guide separately in the service when saving a Student
     //fetch = FetchType.LAZY  by default @ManyToOne is EAGER,
     // means that it will also load the child when fetching the parent behind it is a full outer join
-    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST})
+    //CascadeType.MERGE ---> pentru a putea face update la un Guide din Student
+    //CascadeType.PERSIST ---> pentru a salva un Guide din Student
+    //This is the parent of the relationship, the many side is the owner of the relationship
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinColumn(name="guide_id")
     private Guide guide;
 }

@@ -18,6 +18,7 @@ public class StudentMapper {
                 .age(student.getAge())
                 .registrationDate(student.getRegistrationDate())
                 .amount(student.getAmount())
+                .guide(student.getGuide())
                 .build();
     }
 
@@ -32,6 +33,7 @@ public class StudentMapper {
         student.setAge(studentDto.getAge());
         student.setRegistrationDate(studentDto.getRegistrationDate());
         student.setAmount(studentDto.getAmount());
+        student.setGuide(studentDto.getGuide());
 
         return student;
     }
