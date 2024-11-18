@@ -13,4 +13,8 @@ public interface GuideService {
     GuideDto deleteGuide(String staffId);
 
     List<GuideDto> getGuides();
+
+    GuideDto getGuide(Long id);
+
+    GuideDto getGuideSecond(Long id);
 }

@@ -31,4 +31,14 @@ public class GuideController {
         return new ResponseEntity<>(guideService.getGuides(),HttpStatus.OK);
     }
 
+    @GetMapping("/getGuide/{id}")
+    public ResponseEntity<GuideDto> getGuide(@PathVariable Long id){
+        return new ResponseEntity<>(guideService.getGuide(id),HttpStatus.OK);
+    }
+
+    @GetMapping("/getGuideLast/{id}")
+    public ResponseEntity<GuideDto> getGuideLast(@PathVariable Long id){
+        return new ResponseEntity<>(guideService.getGuideSecond(id),HttpStatus.OK);
+    }
+
 }

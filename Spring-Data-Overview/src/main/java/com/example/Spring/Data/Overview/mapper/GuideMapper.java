@@ -8,6 +8,9 @@ import com.example.Spring.Data.Overview.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -23,9 +26,11 @@ public class GuideMapper {
              throw new IllegalArgumentException("Guide must not be null");
          }
 
-     // Convert Set<Student> to Set<StudentDto>
-     Set<StudentDto> studentDtoSet = guide.getStudentList().stream() .map(studentMapper::convertStudentToDto).collect(Collectors.toSet());
-
+         Set<StudentDto> studentDtoSet = new HashSet<>();
+         for (Student student : guide.getStudentList()) {
+             StudentDto studentDto = studentMapper.convertStudentToDto(student);
+             studentDtoSet.add(studentDto);
+         }
 
          return GuideDto.builder() .staffId(guide.getStaffId())
                  .name(guide.getName())
@@ -43,8 +48,12 @@ public class GuideMapper {
         guide.setName(guideDto.getName());
         guide.setSalary(guideDto.getSalary());
 
-        // Convert Set<StudentDto> to Set<Student>
-        Set<Student> studentSet = guideDto.getStudentList().stream().map(studentMapper::convertDtoToStudent).collect(Collectors.toSet());
+        Set<Student> studentSet = new HashSet<>();
+        for (StudentDto studentDto : guideDto.getStudentList()) {
+            Student student = studentMapper.convertDtoToStudent(studentDto);
+            studentSet.add(student);
+        }
+
 
         guide.setStudentList(studentSet);
         return guide;
