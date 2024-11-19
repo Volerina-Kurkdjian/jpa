@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -68,8 +69,19 @@ public class GuideServiceImpl implements GuideService {
     @Transactional(readOnly = true)
     @Override
     public List<GuideDto> getGuides() {
-       List<Guide> list= guideRepository.findAll();
-        return list.stream().map(guideMapper::convertToDto).collect(Collectors.toList());
+        List<Guide> guideList = guideRepository.findAll();
+        List<GuideDto> guideDtos=new ArrayList<>();
+
+        // For each guide, fetch the associated students
+        for (Guide guide : guideList) {
+            Set<Student> students = studentRepository.findStudentsByGuideId(guide.getGuideId());
+            Set<StudentDto> studentDtoSet=students.stream().map(studentMapper::convertStudentToDto).collect(Collectors.toSet());
+            GuideDto guideDto=guideMapper.convertToDto(guide);
+            guideDto.setStudentList(studentDtoSet);
+            guideDtos.add(guideDto);
+        }
+
+        return guideDtos;
     }
 
 
