@@ -3,7 +3,6 @@ package com.example.Spring.Data.Overview.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -12,6 +11,13 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+
+@NamedEntityGraph(name="Guide.students",
+                  attributeNodes = {
+        @NamedAttributeNode("students")
+        }
+)
+
 public class Guide {
 
     @Id
@@ -24,15 +30,15 @@ public class Guide {
     /**mappedBy makes the relationship bi-directional
     //marks the child in the relationship*/
     @OneToMany(mappedBy = "guide",cascade = {CascadeType.PERSIST},fetch = FetchType.EAGER)
-    Set<Student> studentList;
+    Set<Student> students;
 
     public void addStudent(Student student) {
-        studentList.add(student); student.setGuide(this);
+        students.add(student); student.setGuide(this);
         // Ensure the bi-directional relationship is maintained
     }
 
     public void removeStudent(Student student) {
-        studentList.remove(student);
+        students.remove(student);
         student.setGuide(null);
         // Break the bi-directional relationship
     }

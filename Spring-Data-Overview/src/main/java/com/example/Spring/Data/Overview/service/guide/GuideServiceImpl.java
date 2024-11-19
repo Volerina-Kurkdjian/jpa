@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -36,7 +35,7 @@ public class GuideServiceImpl implements GuideService {
     public GuideDto persistGuideAlongWithStudents(GuideDto guideDto) {
 
         Guide guide = guideMapper.convertToEntity(guideDto);
-        Set<StudentDto> studentDtoSet = guide.getStudentList().stream().map(studentMapper::convertStudentToDto).collect(Collectors.toSet());
+        Set<StudentDto> studentDtoSet = guide.getStudents().stream().map(studentMapper::convertStudentToDto).collect(Collectors.toSet());
         guideRepository.save(guide);
 
         /** How to get a StackOverflow Exception
@@ -79,9 +78,13 @@ public class GuideServiceImpl implements GuideService {
     public GuideDto getGuide(Long id) {
         Guide guide = guideRepository.findById(id).get();
         // Force the loading of the studentList
-        Set<Student> students = guide.getStudentList();
+        Set<Student> students = studentRepository.findStudentsByGuideId(guide.getGuideId());
         students.size(); // Access the size to initialize the lazy-loaded collection return
-        return guideMapper.convertToDto(guide);
+//        guide.setStudents(students);  ---> gives an error
+        Set<StudentDto> studentDtoSet=students.stream().map(studentMapper::convertStudentToDto).collect(Collectors.toSet());
+        GuideDto guideDto=guideMapper.convertToDto(guide);
+        guideDto.setStudentList(studentDtoSet);
+        return guideDto;
     }
 
     public GuideDto getGuideSecond(Long id) {

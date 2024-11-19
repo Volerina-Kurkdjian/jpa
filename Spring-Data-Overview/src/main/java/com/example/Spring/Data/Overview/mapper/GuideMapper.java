@@ -8,11 +8,8 @@ import com.example.Spring.Data.Overview.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Component
 public class GuideMapper {
@@ -27,7 +24,7 @@ public class GuideMapper {
          }
 
          Set<StudentDto> studentDtoSet = new HashSet<>();
-         for (Student student : guide.getStudentList()) {
+         for (Student student : guide.getStudents()) {
              StudentDto studentDto = studentMapper.convertStudentToDto(student);
              studentDtoSet.add(studentDto);
          }
@@ -55,7 +52,7 @@ public class GuideMapper {
         }
 
 
-        guide.setStudentList(studentSet);
+        guide.setStudents(studentSet);
         return guide;
     }
 }
