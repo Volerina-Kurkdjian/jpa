@@ -18,8 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 public class GuideController {
 
-    @Autowired
-    GuideService guideService;
+
+    private final GuideService guideService;
 
     @PostMapping("/create")
     public ResponseEntity<GuideDto> createGuide(@RequestBody GuideDto guideDto){
@@ -39,6 +39,12 @@ public class GuideController {
     @GetMapping("/getGuideLast/{id}")
     public ResponseEntity<GuideDto> getGuideLast(@PathVariable Long id){
         return new ResponseEntity<>(guideService.getGuideSecond(id),HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{staffId}")
+    public ResponseEntity<GuideDto> deleteGuide(@PathVariable String staffId) {
+        GuideDto deletedGuide = guideService.deleteGuide(staffId);
+        return ResponseEntity.ok(deletedGuide);
     }
 
 }

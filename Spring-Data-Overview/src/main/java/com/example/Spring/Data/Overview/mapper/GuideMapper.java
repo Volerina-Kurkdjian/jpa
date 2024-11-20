@@ -5,6 +5,7 @@ import com.example.Spring.Data.Overview.dto.guide.GuideDto;
 import com.example.Spring.Data.Overview.dto.student.StudentDto;
 import com.example.Spring.Data.Overview.model.Guide;
 import com.example.Spring.Data.Overview.model.Student;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +13,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
+@AllArgsConstructor
 public class GuideMapper {
 
-    @Autowired
-    StudentMapper studentMapper;
+   // private final StudentMapper studentMapper;
 
      public GuideDto convertToDto(Guide guide) {
 
@@ -23,16 +24,16 @@ public class GuideMapper {
              throw new IllegalArgumentException("Guide must not be null");
          }
 
-         Set<StudentDto> studentDtoSet = new HashSet<>();
-         for (Student student : guide.getStudents()) {
-             StudentDto studentDto = studentMapper.convertStudentToDto(student);
-             studentDtoSet.add(studentDto);
-         }
+//         Set<StudentDto> studentDtoSet = new HashSet<>();
+//         for (Student student : guide.getStudents()) {
+//             StudentDto studentDto = studentMapper.convertStudentToDto(student);
+//             studentDtoSet.add(studentDto);
+//         }
 
          return GuideDto.builder() .staffId(guide.getStaffId())
                  .name(guide.getName())
                  .salary(guide.getSalary())
-                 .studentList(studentDtoSet)
+                 //.studentList(studentDtoSet)
                  .build();
     }
 
@@ -45,14 +46,14 @@ public class GuideMapper {
         guide.setName(guideDto.getName());
         guide.setSalary(guideDto.getSalary());
 
-        Set<Student> studentSet = new HashSet<>();
-        for (StudentDto studentDto : guideDto.getStudentList()) {
-            Student student = studentMapper.convertDtoToStudent(studentDto);
-            studentSet.add(student);
-        }
-
-
-        guide.setStudents(studentSet);
+//        Set<Student> studentSet = new HashSet<>();
+//        for (StudentDto studentDto : guideDto.getStudentList()) {
+//            Student student = studentMapper.convertDtoToStudent(studentDto);
+//            studentSet.add(student);
+//        }
+//
+//
+//        guide.setStudents(studentSet);
         return guide;
     }
 }

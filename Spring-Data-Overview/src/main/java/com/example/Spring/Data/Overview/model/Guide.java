@@ -12,11 +12,11 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 
-@NamedEntityGraph(name="Guide.students",
-                  attributeNodes = {
-        @NamedAttributeNode("students")
-        }
-)
+//@NamedEntityGraph(name="Guide.students",
+//                  attributeNodes = {
+//        @NamedAttributeNode("students")
+//        }
+//)
 
 public class Guide {
 
@@ -29,7 +29,7 @@ public class Guide {
     private Integer salary;
     /**mappedBy makes the relationship bi-directional
     //marks the child in the relationship*/
-    @OneToMany(mappedBy = "guide",cascade = {CascadeType.PERSIST},fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "guide",cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY)
     Set<Student> students;
 
     public void addStudent(Student student) {

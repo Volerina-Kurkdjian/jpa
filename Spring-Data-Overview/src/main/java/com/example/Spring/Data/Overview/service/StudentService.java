@@ -14,4 +14,7 @@ public interface StudentService {
     StudentResponse getAllStudentsSortedByEnrollmentIdAscendingAndNameDescending(int pageNo, int pageSize);
 
     StudentResponse findByEnrollmentIdOrderByDateDescNameAsc(int pageNo, int pageSize,String enrollmentId);
+
+    StudentDto updateStudent(Long id,StudentDto studentDto);
+
 }

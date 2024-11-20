@@ -14,14 +14,23 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class StudentClient  {
 
-    @Autowired
-    private StudentService studentService;
+
+    private final StudentService studentService;
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<StudentDto> updateStudent(@PathVariable Long id,@RequestBody StudentDto studentDto) {
+      //  studentDto.setId(id); // Ensure the ID is set in the DTO
+        StudentDto updatedStudent = studentService.updateStudent(id,studentDto);
+        return ResponseEntity.ok(updatedStudent);
+    }
 
     @PostMapping("/create")
     public ResponseEntity<StudentDto> createStudent(@RequestBody StudentDto student){
 
         return ResponseEntity.status(HttpStatus.OK).body( studentService.saveStudent(student));
     }
+
+
 
     @GetMapping("/getAllStudents")
     public ResponseEntity<StudentResponse> getStudents(

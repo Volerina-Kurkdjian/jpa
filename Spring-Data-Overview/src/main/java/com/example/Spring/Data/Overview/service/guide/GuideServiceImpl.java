@@ -22,13 +22,13 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class GuideServiceImpl implements GuideService {
 
-    @Autowired
+
     private final GuideRepository guideRepository;
-    @Autowired
+
     private final GuideMapper guideMapper;
-    @Autowired
+
     private final StudentRepository studentRepository;
-    @Autowired
+
     private final StudentMapper studentMapper;
 
 
@@ -36,7 +36,7 @@ public class GuideServiceImpl implements GuideService {
     public GuideDto persistGuideAlongWithStudents(GuideDto guideDto) {
 
         Guide guide = guideMapper.convertToEntity(guideDto);
-        Set<StudentDto> studentDtoSet = guide.getStudents().stream().map(studentMapper::convertStudentToDto).collect(Collectors.toSet());
+        Set<StudentDto> studentDtoSet = guideDto.getStudentList();
         guideRepository.save(guide);
 
         /** How to get a StackOverflow Exception
@@ -63,7 +63,15 @@ public class GuideServiceImpl implements GuideService {
 
     @Override
     public GuideDto deleteGuide(String staffId) {
-        return null;
+        Guide guide = guideRepository.findByStaffId(staffId);
+        GuideDto guideDto=guideMapper.convertToDto(guide);
+
+        if(guide.getStudents()!=null){
+            Set<StudentDto> studentDtoSet=studentRepository.findStudentsByGuideId(guide.getGuideId()).stream().map(studentMapper::convertStudentToDto).collect(Collectors.toSet());
+            guideDto.setStudentList(studentDtoSet);
+        }
+        guideRepository.delete(guide);
+        return guideDto;
     }
 
     @Transactional(readOnly = true)
@@ -74,10 +82,10 @@ public class GuideServiceImpl implements GuideService {
 
         // For each guide, fetch the associated students
         for (Guide guide : guideList) {
-            Set<Student> students = studentRepository.findStudentsByGuideId(guide.getGuideId());
-            Set<StudentDto> studentDtoSet=students.stream().map(studentMapper::convertStudentToDto).collect(Collectors.toSet());
+//            Set<Student> students = studentRepository.findStudentsByGuideId(guide.getGuideId());
+//            Set<StudentDto> studentDtoSet=students.stream().map(studentMapper::convertStudentToDto).collect(Collectors.toSet());
             GuideDto guideDto=guideMapper.convertToDto(guide);
-            guideDto.setStudentList(studentDtoSet);
+        //    guideDto.setStudentList(studentDtoSet);
             guideDtos.add(guideDto);
         }
 

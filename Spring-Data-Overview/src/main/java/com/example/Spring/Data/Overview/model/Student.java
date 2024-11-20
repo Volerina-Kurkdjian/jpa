@@ -38,6 +38,10 @@ public class Student  {
     private Date registrationDate;
     private Double amount;
 
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
+    @JoinColumn(name="passport_id",unique = true)
+    private Passport passport;
+
     /** cascade = {CascadeType.PERSIST} when we use it, we don't need to save the Guide separately in the service when saving a Student
     //fetch = FetchType.LAZY  by default @ManyToOne is EAGER,
     // means that it will also load the child when fetching the parent behind it is a full outer join
@@ -46,7 +50,7 @@ public class Student  {
     //This is the parent of the relationship, the many side is the owner of the relationship
 */
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE})
     @JoinColumn(name="guide_id")
     private Guide guide;
 }
