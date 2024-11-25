@@ -28,24 +28,75 @@ public class StudentMapper {
        // GuideDto guideDto=guideMapper.convertToDto(guide);
         //PassportDto passportDto=convertToDto(student.getPassport());
 
+        if(convertToDto(student.getGuide())!=null){
+            Guide guide=student.getGuide();
+            return StudentDto.builder()
+                    .name(student.getName())
+                    .enrollmentId(student.getEnrollmentId())
+                    .age(student.getAge())
+                    .registrationDate(student.getRegistrationDate())
+                    .amount(student.getAmount())
+                    .passportDto(convertToDto(student.getPassport()))
+                    .guide(convertToDto(student.getGuide()))
+                    .build();
+        }
+
+        if(convertToDto(student.getPassport())!=null){
+            PassportDto passportDto=convertToDto(student.getPassport());
+            return StudentDto.builder()
+                    .name(student.getName())
+                    .enrollmentId(student.getEnrollmentId())
+                    .age(student.getAge())
+                    .registrationDate(student.getRegistrationDate())
+                    .amount(student.getAmount())
+                    .passportDto(convertToDto(student.getPassport()))
+                    .guide(convertToDto(student.getGuide()))
+                    .build();
+        }
+
         return StudentDto.builder()
                 .name(student.getName())
                 .enrollmentId(student.getEnrollmentId())
                 .age(student.getAge())
                 .registrationDate(student.getRegistrationDate())
                 .amount(student.getAmount())
-                .passportDto(convertToDto(student.getPassport()))
-                .guide(convertToDto(student.getGuide()))
+               // .passportDto(convertToDto(student.getPassport()))
+//                .guide(convertToDto(student.getGuide()))
                 .build();
     }
 
     public Student convertDtoToStudent(StudentDto studentDto) {
-        if (studentDto == null) {
-            throw new IllegalArgumentException("StudentDto must not be null");
-        }
+//        if (studentDto == null) {
+//            throw new IllegalArgumentException("StudentDto must not be null");
+//        }
 
        // Guide guide=convertToEntity(studentDto.getGuide());
        // Passport passport=convertToEntity(studentDto.getPassportDto());
+
+        if(convertToEntity(studentDto.getGuide())!=null){
+            Student student = new Student();
+            student.setName(studentDto.getName());
+            student.setEnrollmentId(studentDto.getEnrollmentId());
+            student.setAge(studentDto.getAge());
+            student.setRegistrationDate(studentDto.getRegistrationDate());
+            student.setAmount(studentDto.getAmount());
+            student.setPassport(convertToEntity(studentDto.getPassportDto()));
+            student.setGuide(convertToEntity(studentDto.getGuide()));
+            return student;
+        }
+
+        if(convertToEntity(studentDto.getPassportDto())!=null){
+            Student student = new Student();
+            student.setName(studentDto.getName());
+            student.setEnrollmentId(studentDto.getEnrollmentId());
+            student.setAge(studentDto.getAge());
+            student.setRegistrationDate(studentDto.getRegistrationDate());
+            student.setAmount(studentDto.getAmount());
+            student.setGuide(convertToEntity(studentDto.getGuide()));
+            student.setPassport(convertToEntity(studentDto.getPassportDto()));
+
+            return student;
+        }
 
         Student student = new Student();
         student.setName(studentDto.getName());
@@ -53,8 +104,8 @@ public class StudentMapper {
         student.setAge(studentDto.getAge());
         student.setRegistrationDate(studentDto.getRegistrationDate());
         student.setAmount(studentDto.getAmount());
-        student.setPassport(convertToEntity(studentDto.getPassportDto()));
-        student.setGuide(convertToEntity(studentDto.getGuide()));
+//        student.setPassport(convertToEntity(studentDto.getPassportDto()));
+//        student.setGuide(convertToEntity(studentDto.getGuide()));
 
         return student;
     }

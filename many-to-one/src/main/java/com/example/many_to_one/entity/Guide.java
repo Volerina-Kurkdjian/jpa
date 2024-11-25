@@ -1,8 +1,7 @@
-package com.example.Spring.Data.Overview.model;
+package com.example.many_to_one.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,13 +11,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
-//@NamedEntityGraph(name="Guide.students",
-//                  attributeNodes = {
-//        @NamedAttributeNode("students")
-//        }
-//)
-
 public class Guide {
 
     @Id
@@ -30,7 +22,7 @@ public class Guide {
     private Integer salary;
     /**mappedBy makes the relationship bi-directional
     //marks the child in the relationship*/
-    @OneToMany(mappedBy = "guide",cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "guide",cascade = {CascadeType.MERGE},fetch = FetchType.EAGER)
     Set<Student> students=new HashSet<>();
 
     public void addStudent(Student student) {

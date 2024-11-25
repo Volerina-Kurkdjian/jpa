@@ -32,6 +32,9 @@ public class StudentServiceImpl implements StudentService{
 
     private final StudentMapper studentMapper;
 
+    private final GuideRepository guideRepository;
+    private final PassportRepository passportRepository;
+
     @Transactional
     @Override
     public StudentDto saveStudent(StudentDto student) {
@@ -125,15 +128,16 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public StudentDto updateStudent(Long id,StudentDto studentDto) {
 
-        //up until now it will create new Guide and new Passport associated with the Student
-        //need changes to update the already existing Guide and Passport
         Student student= studentRepository.findById(id).get();
-        student.setGuide(studentMapper.convertDtoToStudent(studentDto).getGuide());
-        student.setPassport(studentMapper.convertDtoToStudent(studentDto).getPassport());
-        student.setAge(studentMapper.convertDtoToStudent(studentDto).getAge());
-        student.setAmount(studentMapper.convertDtoToStudent(studentDto).getAmount());
-        student.setName(studentMapper.convertDtoToStudent(studentDto).getName());
-        student.setAge(studentMapper.convertDtoToStudent(studentDto).getAge());
+
+        Student student1=studentMapper.convertDtoToStudent(studentDto);
+
+        student.setGuide(student1.getGuide());
+        student.setPassport(student1.getPassport());
+        student.setAge(student1.getAge());
+        student.setAmount(student1.getAmount());
+        student.setName(student1.getName());
+        student.setAge(student1.getAge());
 
         studentRepository.save(student);
 

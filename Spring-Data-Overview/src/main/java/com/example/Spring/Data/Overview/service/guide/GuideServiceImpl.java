@@ -31,13 +31,22 @@ public class GuideServiceImpl implements GuideService {
 
     private final StudentMapper studentMapper;
 
-
+    @Transactional
     @Override
     public GuideDto persistGuideAlongWithStudents(GuideDto guideDto) {
 
-        Guide guide = guideMapper.convertToEntity(guideDto);
+        Guide guide = guideMapper.toGuideEntity(guideDto);
         Set<StudentDto> studentDtoSet = guideDto.getStudentList();
+
         guideRepository.save(guide);
+//        for (Student student : guide.getStudents()) {
+//           guide.addStudent(student);
+//            student.setGuide(guide);
+//            studentRepository.save(student);
+//          //  student.setGuide(guide);
+//        }
+
+
 
         /** How to get a StackOverflow Exception
          *  // First, save the guide (parent)
@@ -49,7 +58,7 @@ public class GuideServiceImpl implements GuideService {
          }
          */
 
-        GuideDto guideDto1=guideMapper.convertToDto(guide);
+        GuideDto guideDto1=guideMapper.toGuideDTO(guide);
         guideDto1.setStudentList(studentDtoSet);//add the set of students to the Guide DTO
         return guideDto1;
     }
@@ -77,18 +86,18 @@ public class GuideServiceImpl implements GuideService {
     @Transactional(readOnly = true)
     @Override
     public List<GuideDto> getGuides() {
+
+
         List<Guide> guideList = guideRepository.findAll();
         List<GuideDto> guideDtos=new ArrayList<>();
-
         // For each guide, fetch the associated students
         for (Guide guide : guideList) {
-//            Set<Student> students = studentRepository.findStudentsByGuideId(guide.getGuideId());
-//            Set<StudentDto> studentDtoSet=students.stream().map(studentMapper::convertStudentToDto).collect(Collectors.toSet());
+            Set<Student> students = studentRepository.findStudentsByGuideId(guide.getGuideId());
+            Set<StudentDto> studentDtoSet=students.stream().map(studentMapper::convertStudentToDto).collect(Collectors.toSet());
             GuideDto guideDto=guideMapper.convertToDto(guide);
-        //    guideDto.setStudentList(studentDtoSet);
+            guideDto.setStudentList(studentDtoSet);
             guideDtos.add(guideDto);
         }
-
         return guideDtos;
     }
 

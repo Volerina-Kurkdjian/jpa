@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class PassportMapper {
 
-   // private final StudentMapper studentMapper;
+    private final StudentMapper studentMapper;
 
 
     public PassportDto convertToDto(Passport passport) {
@@ -23,7 +23,7 @@ public class PassportMapper {
        // passportDto.setId(passport.getId());
         passportDto.setCountryCode(passport.getCountry_code());
         // Convert and set the associated student
-      //  passportDto.setStudentDto(studentMapper.convertStudentToDto(passport.getStudent()));
+        passportDto.setStudentDto(studentMapper.convertStudentToDto(passport.getStudent()));
         return passportDto;
     }
 
@@ -37,7 +37,7 @@ public class PassportMapper {
         //passport.setId(passportDto.getId());
         passport.setCountry_code(passportDto.getCountryCode());
         // Convert and set the associated student
-      //  passport.setStudent(studentMapper.convertDtoToStudent(passportDto.getStudentDto()));
+        passport.setStudent(studentMapper.convertDtoToStudent(passportDto.getStudentDto()));
 
         return passport;
     }

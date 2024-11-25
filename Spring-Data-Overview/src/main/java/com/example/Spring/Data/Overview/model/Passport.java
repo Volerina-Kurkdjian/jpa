@@ -16,7 +16,7 @@ public class Passport {
     private Long id;
     @Column
     private String country_code;
-    @OneToOne(mappedBy = "passport",cascade = {CascadeType.PERSIST},fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "passport",cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
     private Student student;
 
     // Method to add a student
