@@ -15,4 +15,6 @@ public interface GuideService {
     List<GuideDto> getGuides();
 
     GuideDto getGuide(Long id);
+
+    List<GuideDto.GuideDtoProjection> firstThreeSalaryGreaterThan(Integer salary);
 }

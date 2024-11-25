@@ -47,4 +47,10 @@ public class GuideController {
         GuideDto deletedGuide = guideService.deleteGuide(staffId);
         return ResponseEntity.ok(deletedGuide);
     }
+
+    @GetMapping("/getFirstThree/{salary}")
+    public ResponseEntity<List<GuideDto.GuideDtoProjection>> getFirstThreeGuidesBasedOnSalary(@PathVariable Integer salary){
+        return new ResponseEntity<>(guideService.firstThreeSalaryGreaterThan(salary),HttpStatus.OK);
+    }
+
 }

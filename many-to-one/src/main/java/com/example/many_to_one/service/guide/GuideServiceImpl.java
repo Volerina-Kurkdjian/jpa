@@ -88,4 +88,9 @@ public class GuideServiceImpl implements GuideService{
 
         return guideDto;
     }
+
+    @Override
+    public List<GuideDto.GuideDtoProjection> firstThreeSalaryGreaterThan(Integer salary) {
+        return  guideRepository.findFirst3BySalaryGreaterThan(salary);
+    }
 }

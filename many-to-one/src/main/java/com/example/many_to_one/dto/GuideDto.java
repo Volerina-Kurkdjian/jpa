@@ -18,4 +18,8 @@ public class GuideDto {
     private String name;
     private Integer salary;
     Set<StudentDto> students;
+
+    public record GuideDtoProjection(String name,Integer salary){
+
+    }
 }
