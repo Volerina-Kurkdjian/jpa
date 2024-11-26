@@ -13,4 +13,6 @@ public interface StudentService {
 
     List<StudentDto> getStudents(Integer age);
 
+    List<StudentDto.StudentDtoNameAndAmount> getStudentsByAge(Integer age);
+
 }

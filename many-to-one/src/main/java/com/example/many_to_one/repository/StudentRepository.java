@@ -35,4 +35,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Procedure("find_name_and_amount_by_age")
     List<StudentDto> findStudents(Integer age);
+
+    @Query(value = "CALL name_and_amount_by_age(:age)", nativeQuery = true)
+    List<Object[]> findNameAndAmountByAge(@Param("age") Integer age);
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -60,5 +61,13 @@ public class StudentServiceImpl implements StudentService{
         return  studentRepository.findStudents(age);
     }
 
+    @Transactional
+    @Override
+    public List<StudentDto.StudentDtoNameAndAmount> getStudentsByAge(Integer age) {
+        List<Object[]> results = studentRepository.findNameAndAmountByAge(age);
+        return results.stream()
+                .map(result -> new StudentDto.StudentDtoNameAndAmount((String) result[0], (Double) result[1]))
+                .collect(Collectors.toList());
 
+    }
 }

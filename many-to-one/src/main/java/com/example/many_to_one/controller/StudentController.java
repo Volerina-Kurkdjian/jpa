@@ -31,7 +31,7 @@ public class StudentController {
     }
 
     @GetMapping("/getStudents/{age}")
-    public ResponseEntity<List<StudentDto>> getStudentsByAge(@PathVariable Integer age){
-        return ResponseEntity.status(HttpStatus.OK).body( studentService.getStudents(age));
+    public ResponseEntity<List<StudentDto.StudentDtoNameAndAmount>> getStudentsByAge(@PathVariable Integer age){
+        return ResponseEntity.status(HttpStatus.OK).body( studentService.getStudentsByAge(age));
     }
 }
