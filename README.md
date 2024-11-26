@@ -160,6 +160,23 @@ Call the request for the procedure
 
 <img width="691" alt="image" src="https://github.com/user-attachments/assets/cf76ae50-bcf3-4d93-810e-54ebb846097d">
 
+<br></br>
+<h1>PROJECTION</h1>
+
+<br></br>
+Create a record in DTO 
+
+<img width="491" alt="image" src="https://github.com/user-attachments/assets/14d87c67-0493-4823-9fbc-994dcc984562">
+
+<br></br>
+Create a method in Repository that will return the projection
+
+<img width="591" alt="image" src="https://github.com/user-attachments/assets/d94c46f6-df54-4975-a6f9-783c1d7610cd">
+
+<br></br>
+Make the call to the request
+
+<img width="591" alt="image" src="https://github.com/user-attachments/assets/0a38b120-8cd5-4b82-ac7b-e59bfdf00210">
 
 
 
