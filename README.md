@@ -135,9 +135,15 @@ Hibernate will then correctly fetch the Set<Student> when you fetch a Guide.
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/4d19809b-8516-455f-8310-c67d9564ef36">
 
 <br></br>
-Use native query to call the procedure in the Repository
+Use <b>Native Query</b> to call the procedure in the Repository
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/f1f4ba12-2cd3-4b30-8a54-6cd097bf28fd">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/f1f4ba12-2cd3-4b30-8a54-6cd097bf28fd">
+
+<br></br>
+Use <b>@Procedure</b> annotation in the Repository
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/f94e9ad3-e7c2-478b-a9b0-15daf231f825">
+
 
 <br></br>
 Create a record in DTO level to return just the needed information
@@ -147,7 +153,7 @@ Create a record in DTO level to return just the needed information
 <br></br>
 Map the result in the Service layer
 
-<img width="691" alt="image" src="https://github.com/user-attachments/assets/83668fd7-9d2d-4304-94d7-6ed5c5ae26db">
+<img width="791" alt="image" src="https://github.com/user-attachments/assets/83668fd7-9d2d-4304-94d7-6ed5c5ae26db">
 
 <br></br>
 Call the request for the procedure
