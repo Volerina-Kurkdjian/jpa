@@ -6,6 +6,7 @@ import com.example.many_to_one.entity.Guide;
 import com.example.many_to_one.entity.Student;
 import com.example.many_to_one.mapper.GuideMapper;
 import com.example.many_to_one.mapper.StudentMapper;
+import com.example.many_to_one.projections.GuideProjection;
 import com.example.many_to_one.repository.GuideRepository;
 import com.example.many_to_one.repository.StudentRepository;
 import lombok.AllArgsConstructor;
@@ -92,5 +93,10 @@ public class GuideServiceImpl implements GuideService{
     @Override
     public List<GuideDto.GuideDtoProjection> firstThreeSalaryGreaterThan(Integer salary) {
         return  guideRepository.findFirst3BySalaryGreaterThan(salary);
+    }
+
+    @Override
+    public List<GuideProjection> getGuidesWithMoreThanThreeStudents() {
+        return  guideRepository.findGuidesWithNameAndSalaryAndMoreThanTwoStudents();
     }
 }

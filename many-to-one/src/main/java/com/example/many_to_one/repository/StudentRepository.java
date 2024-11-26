@@ -1,11 +1,13 @@
 package com.example.many_to_one.repository;
 
 
+import com.example.many_to_one.dto.StudentDto;
 import com.example.many_to_one.entity.Student;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Set;
@@ -30,4 +32,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query("SELECT s FROM Student s WHERE s.guide.guideId = :guideId")
     Set<Student> findStudentsByGuideId(@Param("guideId") Long guideId);
+
+    @Procedure("find_name_and_amount_by_age")
+    List<StudentDto> findStudents(Integer age);
 }

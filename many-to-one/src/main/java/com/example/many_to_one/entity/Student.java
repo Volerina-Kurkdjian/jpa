@@ -1,5 +1,7 @@
 package com.example.many_to_one.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
@@ -22,6 +24,8 @@ import java.util.List;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
+    @JsonIgnoreProperties
     private Long id;
 
     @Column(nullable=false)

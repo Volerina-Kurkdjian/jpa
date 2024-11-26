@@ -2,11 +2,14 @@ package com.example.many_to_one.controller;
 
 
 import com.example.many_to_one.dto.StudentDto;
+import com.example.many_to_one.entity.Student;
 import com.example.many_to_one.service.student.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/student")
@@ -25,5 +28,10 @@ public class StudentController {
     @PostMapping("/create")
     public ResponseEntity<StudentDto> createStudent(@RequestBody StudentDto student){
         return ResponseEntity.status(HttpStatus.OK).body( studentService.saveStudent(student));
+    }
+
+    @GetMapping("/getStudents/{age}")
+    public ResponseEntity<List<StudentDto>> getStudentsByAge(@PathVariable Integer age){
+        return ResponseEntity.status(HttpStatus.OK).body( studentService.getStudents(age));
     }
 }

@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class StudentServiceImpl implements StudentService{
@@ -50,6 +52,12 @@ public class StudentServiceImpl implements StudentService{
         studentRepository.save(existingStudent);
 
         return studentMapper.toStudentDto(existingStudent);
+    }
+
+    @Transactional
+    @Override
+    public List<StudentDto> getStudents(Integer age) {
+        return  studentRepository.findStudents(age);
     }
 
 

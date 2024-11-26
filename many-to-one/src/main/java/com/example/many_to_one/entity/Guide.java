@@ -1,5 +1,6 @@
 package com.example.many_to_one.entity;
 
+import com.example.many_to_one.projections.GuideProjection;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.HashSet;
@@ -39,6 +40,5 @@ public class Guide {
         student.setGuide(null);
         // Break the bi-directional relationship
     }
-
 
 }

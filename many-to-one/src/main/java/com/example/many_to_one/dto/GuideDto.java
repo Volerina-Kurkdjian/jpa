@@ -22,4 +22,6 @@ public class GuideDto {
     public record GuideDtoProjection(String name,Integer salary){
 
     }
+
+
 }

@@ -23,4 +23,9 @@ public class StudentDto {
     private Date registrationDate;
     private Double amount;
     private GuideDto guide;
+
+
+   public record StudentDtoNameAndAmount(String name,Double amount){
+
+    }
 }

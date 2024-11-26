@@ -1,6 +1,7 @@
 package com.example.many_to_one.controller;
 
 import com.example.many_to_one.dto.GuideDto;
+import com.example.many_to_one.projections.GuideProjection;
 import com.example.many_to_one.service.guide.GuideService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,6 @@ public class GuideController {
     public ResponseEntity<GuideDto> updateGuide(@RequestBody GuideDto guideDto){
         return ResponseEntity.status(HttpStatus.OK).body( guideService.updateGuide(guideDto));
     }
-
 
 
     @GetMapping("/getGuides")
@@ -51,6 +51,11 @@ public class GuideController {
     @GetMapping("/getFirstThree/{salary}")
     public ResponseEntity<List<GuideDto.GuideDtoProjection>> getFirstThreeGuidesBasedOnSalary(@PathVariable Integer salary){
         return new ResponseEntity<>(guideService.firstThreeSalaryGreaterThan(salary),HttpStatus.OK);
+    }
+
+    @GetMapping("/getGuidesStudents")
+    public ResponseEntity<List<GuideProjection>> getGuidesWithMoreThanTwoStudents(){
+        return new ResponseEntity<>(guideService.getGuidesWithMoreThanThreeStudents(),HttpStatus.OK);
     }
 
 }
