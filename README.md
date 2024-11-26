@@ -127,7 +127,32 @@ Hibernate will then correctly fetch the Set<Student> when you fetch a Guide.
 
 <img width="200" alt="image" src="https://github.com/user-attachments/assets/a994b848-7297-4051-9c7a-64c40b84f2bc">
 
+<br></br>
+<h1>PROCEDURES</h1>
 
+<br></br>
+<h3>CREATE A PROCEDURE IN MYSQL WORKBENCH</h3>
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/4d19809b-8516-455f-8310-c67d9564ef36">
+
+<br></br>
+Use native query to call the procedure in the Repository
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/f1f4ba12-2cd3-4b30-8a54-6cd097bf28fd">
+
+<br></br>
+Create a record in DTO level to return just the needed information
+
+<img width="491" alt="image" src="https://github.com/user-attachments/assets/edb0ce49-042a-47aa-8b5d-da4d81311db2">
+
+<br></br>
+Map the result in the Service layer
+
+<img width="691" alt="image" src="https://github.com/user-attachments/assets/83668fd7-9d2d-4304-94d7-6ed5c5ae26db">
+
+<br></br>
+Call the request for the procedure
+
+<img width="691" alt="image" src="https://github.com/user-attachments/assets/cf76ae50-bcf3-4d93-810e-54ebb846097d">
 
 
 
