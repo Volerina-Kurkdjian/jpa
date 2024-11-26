@@ -14,7 +14,6 @@ import java.util.List;
 @Builder
 public class StudentDto {
 
-   // @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
     private String name;
     private String enrollmentId;

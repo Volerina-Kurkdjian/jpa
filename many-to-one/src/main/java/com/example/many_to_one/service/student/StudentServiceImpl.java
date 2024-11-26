@@ -57,8 +57,11 @@ public class StudentServiceImpl implements StudentService{
 
     @Transactional
     @Override
-    public List<StudentDto> getStudents(Integer age) {
-        return  studentRepository.findStudents(age);
+    public List<StudentDto.StudentDtoNameAndAmount> getStudents(Integer age) {
+        List<Object[]> results =  studentRepository.findStudents(age);
+        return results.stream()
+                .map(result -> new StudentDto.StudentDtoNameAndAmount((String) result[0], (Double) result[1]))
+                .collect(Collectors.toList());
     }
 
     @Transactional

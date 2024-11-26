@@ -11,7 +11,7 @@ public interface StudentService {
 
     StudentDto updateStudent(Long id,StudentDto studentDto);
 
-    List<StudentDto> getStudents(Integer age);
+    List<StudentDto.StudentDtoNameAndAmount> getStudents(Integer age);
 
     List<StudentDto.StudentDtoNameAndAmount> getStudentsByAge(Integer age);
 

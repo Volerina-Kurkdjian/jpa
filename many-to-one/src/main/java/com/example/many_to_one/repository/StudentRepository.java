@@ -33,8 +33,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("SELECT s FROM Student s WHERE s.guide.guideId = :guideId")
     Set<Student> findStudentsByGuideId(@Param("guideId") Long guideId);
 
-    @Procedure("find_name_and_amount_by_age")
-    List<StudentDto> findStudents(Integer age);
+    @Procedure("name_and_amount_by_age")
+    List<Object[]> findStudents(Integer age);
 
     @Query(value = "CALL name_and_amount_by_age(:age)", nativeQuery = true)
     List<Object[]> findNameAndAmountByAge(@Param("age") Integer age);
