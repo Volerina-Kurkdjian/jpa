@@ -22,7 +22,8 @@ public class GuideMapper {
 
     public  GuideDto toGuideDto(Guide guide){
         GuideDto guideDto=modelMapper.map(guide, GuideDto.class);
-        Set<StudentDto> studentDtos = guide.getStudents().stream() .map(studentMapper::toStudentDto) .collect(Collectors.toSet()); guideDto.setStudents(studentDtos);
+        Set<StudentDto> studentDtos = guide.getStudents().stream() .map(studentMapper::toStudentDto) .collect(Collectors.toSet());
+        guideDto.setStudents(studentDtos);
         return guideDto;
     }
 
