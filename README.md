@@ -190,7 +190,9 @@ Make the call to the request
 <img width="491" alt="image" src="https://github.com/user-attachments/assets/24a3e03f-a149-4b1d-afde-f32e7aca25f8">
 
 <h2></h2>
-<b>JOINED TABLE STRATEGY</b> each class is mapped to its own table. Tables are linked using <b>FOREIGN KEY</b>, and the base table has a discriminator column.  
+<b>JOINED TABLE STRATEGY</b> each class is mapped to its own table. Tables are linked using <b>FOREIGN KEY</b>, and the base table has a discriminator column. 
+The two child tables: CAT and DOG have no link between them, so we can not use a <b>JOIN</b> between them, as there is no relationship between them. 
+Also, having the an attribute in the parent class means we can not have the same attribute in the children classes. 
 <br></br>
 
 <b>ANIMAL TABLE</b>
