@@ -25,25 +25,22 @@ public class ActorServiceImpl implements ActorService{
     private final MovieMapper movieMapper;
 
 
-    @Transactional
-    @Override
-    public ActorDto createActor(Long movieId,ActorDto actorDto) {
+        @Transactional
+        @Override
+        public ActorDto createActor(Long movieId,ActorDto actorDto) {
 
             Movie movie = movieRepository.findById(movieId).get();
             Actor actor = actorMapper.mapToEntity(actorDto);
-        // Ensure all movies are managed by the persistence context
 
-        // Add and create new Actor
+            // Add and create new Actor
             Actor savedActor = actorRepository.save(actor);
             movie.getActors().add(actor);
 
-           // movieRepository.save(movie);
-
             return actorMapper.maptToDto(savedActor);
-    }
+        }
 
-    @Override
-    public ActorDto updateActor(ActorDto actorDto) {
-        return null;
-    }
+        @Override
+        public ActorDto updateActor(ActorDto actorDto) {
+            return null;
+        }
 }
