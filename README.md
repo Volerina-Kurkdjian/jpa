@@ -189,6 +189,22 @@ Make the call to the request
 
 <img width="491" alt="image" src="https://github.com/user-attachments/assets/24a3e03f-a149-4b1d-afde-f32e7aca25f8">
 
+<h2></h2>
+<b>JOINED TABLE STRATEGY</b> each class is mapped to its own table. Tables are linked using <b>FOREIGN KEY</b>, and the base table has a discriminator column.  
+<br></br>
+
+<b>ANIMAL TABLE</b>
+
+<img width="191" alt="image" src="https://github.com/user-attachments/assets/794a1387-cfdf-4ed7-b049-f4a4a78f8189">
+
+<br></br>
+<b>DOG and CAT TABLE</b>
+
+<img width="291" alt="image" src="https://github.com/user-attachments/assets/0d64363e-eb73-429d-b500-c4056e420884">
+
+<h2></h2>
+
+
 
 
 
