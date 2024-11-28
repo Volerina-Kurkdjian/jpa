@@ -194,6 +194,10 @@ Make the call to the request
 The two child tables: CAT and DOG have no link between them, so we can not use a <b>JOIN</b> between them, as there is no relationship between them. 
 Also, having the an attribute in the parent class means we can not have the same attribute in the children classes. 
 <br></br>
+The GenerationType for the id must be SEQUENCE, with IDENTITY there is no guarantee that the id will be unique.
+<br></br>
+<img width="391" alt="image" src="https://github.com/user-attachments/assets/28ad55d5-937e-4538-a749-473d9f199ca4">
+<br></br>
 
 <b>ANIMAL TABLE</b>
 
