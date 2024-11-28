@@ -183,6 +183,10 @@ Make the call to the request
 <br></br>
 <b>SINGLE TABLE STRATEGY</b> a single Animal table is created that has types of animals that are being inserted. We have Cat and Dog entities, dto, repositories, service and controller layer, however a single table is created
 <br></br>
+<img width="491" alt="image" src="https://github.com/user-attachments/assets/e5ba1e76-6cf5-4725-b06e-ddcdfef3fa55">
+
+<br></br>
+
 <img width="491" alt="image" src="https://github.com/user-attachments/assets/24a3e03f-a149-4b1d-afde-f32e7aca25f8">
 
 
