@@ -181,7 +181,7 @@ Make the call to the request
 <br></br>
 <h1>INHERITANCE</h1>
 <br></br>
-A single Animal table is created that has types of animals that are being inserted
+<b>SINGLE TABLE STRATEGY</b> a single Animal table is created that has types of animals that are being inserted. We have Cat and Dog entities, dto, repositories, service and controller layer, however a single table is created
 <br></br>
 <img width="491" alt="image" src="https://github.com/user-attachments/assets/24a3e03f-a149-4b1d-afde-f32e7aca25f8">
 
