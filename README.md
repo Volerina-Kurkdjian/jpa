@@ -178,6 +178,12 @@ Make the call to the request
 
 <img width="591" alt="image" src="https://github.com/user-attachments/assets/0a38b120-8cd5-4b82-ac7b-e59bfdf00210">
 
+<br></br>
+<h1>INHERITANCE</h1>
+<br></br>
+A single Animal table is created that has types of animals that are being inserted
+<br></br>
+<img width="491" alt="image" src="https://github.com/user-attachments/assets/24a3e03f-a149-4b1d-afde-f32e7aca25f8">
 
 
 
