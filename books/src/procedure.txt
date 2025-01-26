@@ -1,0 +1,9 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_books_by_author`(
+    IN auth VARCHAR(255),
+    OUT total INT
+)
+BEGIN
+    SELECT COUNT(*) INTO total
+    FROM book_entity
+    WHERE author = auth;
+END
