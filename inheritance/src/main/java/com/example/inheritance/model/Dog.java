@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class Dog extends Animal{
 
+ //   String name;
     String color;
     String breed;
     Integer age;

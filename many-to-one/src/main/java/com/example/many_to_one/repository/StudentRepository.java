@@ -3,6 +3,8 @@ package com.example.many_to_one.repository;
 
 import com.example.many_to_one.dto.StudentDto;
 import com.example.many_to_one.entity.Student;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,7 +16,9 @@ import java.util.Set;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-
+    @PersistenceContext
+    EntityManager entityManager = null;
+    
     List<Student> findFirst2ByEnrollmentIdStartingWithAndNameLike(String enrollmentId,String name);
 
     //we commented the queries on Repository because they are defined on Entity class
@@ -38,4 +42,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query(value = "CALL name_and_amount_by_age(:age)", nativeQuery = true)
     List<Object[]> findNameAndAmountByAge(@Param("age") Integer age);
+
+  
 }

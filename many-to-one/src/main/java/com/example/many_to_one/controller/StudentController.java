@@ -39,4 +39,9 @@ public class StudentController {
     public ResponseEntity<List<StudentDto.StudentDtoNameAndAmount>> getSecondProcedureStudentsByAge(@PathVariable Integer age){
         return ResponseEntity.status(HttpStatus.OK).body( studentService.getStudentsByAge(age));
     }
+
+//    @GetMapping("/getCountStudentsByAge")
+//    public ResponseEntity<List<Student>> getCountStudentByAge(){
+//
+//    }
 }

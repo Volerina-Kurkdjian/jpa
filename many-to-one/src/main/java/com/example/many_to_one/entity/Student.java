@@ -20,6 +20,24 @@ import java.util.List;
 
 @NamedNativeQuery(name="Student.findByNameEndingWith",
         query="select * from student where name like %?1") // Use ?1 for positional parameter binding (starts from 1)
+
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(
+                name="CountByAgeProcedure",
+                procedureName = "count_student_by_age",
+                parameters = {
+                        @StoredProcedureParameter(
+                                name="age",
+                                type=Integer.class,
+                                mode=ParameterMode.IN),
+                        @StoredProcedureParameter(
+                                name="count",
+                                type=Integer.class,
+                                mode = ParameterMode.OUT)
+                }
+        )
+})
+
 @Entity
 public class Student {
     @Id

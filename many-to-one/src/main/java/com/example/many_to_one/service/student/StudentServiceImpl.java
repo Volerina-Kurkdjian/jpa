@@ -6,7 +6,11 @@ import com.example.many_to_one.entity.Student;
 import com.example.many_to_one.mapper.StudentMapper;
 import com.example.many_to_one.repository.GuideRepository;
 import com.example.many_to_one.repository.StudentRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.StoredProcedureQuery;
 import lombok.AllArgsConstructor;
+import org.springframework.jdbc.object.StoredProcedure;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +20,8 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class StudentServiceImpl implements StudentService{
+
+
 
     private final StudentRepository studentRepository;
     private final StudentMapper studentMapper;
@@ -73,4 +79,9 @@ public class StudentServiceImpl implements StudentService{
                 .collect(Collectors.toList());
 
     }
+
+//    @Transactional
+//    public Integer countStudentByAge(){
+//
+//    }
 }

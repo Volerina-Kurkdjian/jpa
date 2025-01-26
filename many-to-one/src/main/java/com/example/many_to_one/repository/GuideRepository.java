@@ -23,4 +23,6 @@ public interface GuideRepository extends JpaRepository<Guide, Long> {
         @Query("SELECT g.name, g.salary, COUNT(s) FROM Guide g JOIN g.students s GROUP BY g.name, g.salary HAVING COUNT(s) > 2")
         List<GuideProjection> findGuidesWithNameAndSalaryAndMoreThanTwoStudents();
 
+
+
 }
